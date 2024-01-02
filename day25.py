@@ -87,6 +87,10 @@ print(f"nodes: {total_nodes}, links: {total_links}")
 # was one of the three to remove)
 links.sort(key=lambda li: -find_shortest_route_around(li))
 
+# note: this worked, but even better, in case they had thrown in a few other links with a long
+# circumvention that were NOT among the three you needed to cut, would have been to reorder
+# with i starting from the 3rd, and j and k both before it, so you don't test the later j and k
+# links until you've exhausted all combinations of links before them.
 for i in range(total_links - 2):
     print(f"link {i} - shortest alternate: {find_shortest_route_around(links[i])}")
     for j in range(i + 1, total_links - 1):
